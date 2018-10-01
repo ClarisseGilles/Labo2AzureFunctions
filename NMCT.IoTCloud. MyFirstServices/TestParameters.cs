@@ -15,15 +15,13 @@ namespace NMCT.IoTCloud._MyFirstServices
     public static class TestParameters
     {
         [FunctionName("TestParameters")]
-        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequest req, ILogger log)
+        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "rekenmachine/{bewering}/{getal1}/{getal2}")]HttpRequest req, string bewerking, int getal1, int getal2, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
-            string bewerking = req.Query["rekenmachine"];
-            string getal1 = req.Query[bewerking];
-            string getal2 = req.Query[getal1];
 
-            
+
+
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
@@ -31,9 +29,9 @@ namespace NMCT.IoTCloud._MyFirstServices
             switch (bewerking)
             {
                 case "som":
-                    return (ActionResult)new OkObjectResult(int.Parse(getal1) + int.Parse(getal2));
+                    return (ActionResult)new OkObjectResult(getal1 + getal2);
                 case "delen":
-                    return (ActionResult)new OkObjectResult(int.Parse(getal1) / int.Parse(getal2));
+                    return (ActionResult)new OkObjectResult(getal1 / getal2);
                 default:
                     return new BadRequestObjectResult("geen bewerking opgegeven");
             }
