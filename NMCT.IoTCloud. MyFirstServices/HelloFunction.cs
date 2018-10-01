@@ -12,9 +12,9 @@ using Newtonsoft.Json;
 
 namespace NMCT.IoTCloud._MyFirstServices
 {
-    public static class HelloFunctions
+    public static class HelloFunction
     {
-        [FunctionName("HelloFunctions")]
+        [FunctionName("HelloFunction")]
         public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
