@@ -15,7 +15,7 @@ namespace NMCT.IoTCloud._MyFirstServices
     public static class TestParameters
     {
         [FunctionName("TestParameters")]
-        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "rekenmachine/{bewering}/{getal1}/{getal2}")]HttpRequest req, string bewerking, int getal1, int getal2, ILogger log)
+        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "rekenmachine/{bewerking}/{getal1}/{getal2}")]HttpRequest req, string bewerking, int getal1, int getal2, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
