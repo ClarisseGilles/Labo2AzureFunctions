@@ -21,8 +21,10 @@ namespace NMCT.IoTCloud._MyFirstServices
             string to = string.Empty;
             foreach (var key in req.Query.Keys)
             {
-                if (key == req.Query["from"]) from = req.Query["from"];
-                if (key == req.Query["from"]) to = req.Query["to"];
+                if (key == "from") from = req.Query["from"];
+                
+                if (key == "to") to = req.Query["to"];
+                
             }
             log.LogInformation($"From: {from} to {to}");
             return new OkObjectResult("Done");
